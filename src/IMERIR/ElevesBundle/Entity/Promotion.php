@@ -31,7 +31,7 @@ class Promotion
     /**
      * @var string
      *
-     * @ORM\Column(name="annee", type="string", length=255)
+     * @ORM\Column(name="annee", type="string", length=255, nullable=true)
      */
     private $annee;
 

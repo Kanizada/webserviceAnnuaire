@@ -2,21 +2,27 @@
 
 namespace IMERIR\ElevesBundle\Controller;
 
+use IMERIR\ElevesBundle\Entity\Eleve;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
-use FOS\RestBundle\Controller\Annotations\Get;
+use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\Annotations\Post;
 use FOS\RestBundle\Controller\Annotations\Put;
 use FOS\RestBundle\Controller\Annotations\Delete;
 
 class RESTEleveControllerController extends Controller
 {
+    /**
+     * @Rest\View()
+     */
     public function getElevesListAction(Request $request)
     {
-        $listEleves = array("toto","tutu");
-        return new JsonResponse($listEleves);
+        $listEleves = $this->getDoctrine()->getRepository('IMERIRElevesBundle:Eleve')->findAll();
+
+        /* @var $listEleves Eleve[] */
+        return $listEleves;
     }
 
     public function getElevesAction($id, Request $request)

@@ -80,13 +80,13 @@ class Eleve
     /**
      * @var string
      *
-     * @ORM\Column(name="photo", type="blob")
+     * @ORM\Column(name="photo", type="blob", nullable=true)
      */
     private $photo;
 
     /**
      * @ORM\ManyToOne(targetEntity="IMERIR\ElevesBundle\Entity\Promotion")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $promotion;
 
