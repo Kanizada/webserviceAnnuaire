@@ -1,0 +1,11 @@
+#imerir_eleves:
+#    resource: "@IMERIRElevesBundle/Resources/config/routing.yml"
+#    prefix:   /
+#
+#app:
+#    resource: "@AppBundle/Controller/"
+#    type:     annotation
+
+api_eleves:
+    type:     rest
+    resource: "@IMERIRElevesBundle/Controller/RESTEleveControllerController.php"
