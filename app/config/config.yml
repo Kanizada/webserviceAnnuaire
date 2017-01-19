@@ -75,7 +75,7 @@ swiftmailer:
 # FOSRestBundle
 
 fos_rest:
-    param_fetcher_listener: true
+    param_fetcher_listener: force
     body_listener: true
     format_listener: true
     format_listener:
@@ -92,6 +92,8 @@ fos_rest:
             html: true
         failed_validation: HTTP_BAD_REQUEST
         default_engine: twig
+        mime_types:
+            json: ['application/json; charset=UTF-8', 'application/json']
     routing_loader:
         default_format: json
         include_format: false

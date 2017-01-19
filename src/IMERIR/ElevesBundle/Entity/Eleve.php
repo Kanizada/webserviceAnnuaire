@@ -85,6 +85,13 @@ class Eleve
     private $photo;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="apikey", type="string", length=255)
+     */
+    private $apikey;
+
+    /**
      * @ORM\ManyToOne(targetEntity="IMERIR\ElevesBundle\Entity\Promotion")
      * @ORM\JoinColumn(nullable=true)
      */
@@ -352,6 +359,7 @@ class Eleve
     public function __construct()
     {
         $this->entreprises = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->apikey = $this->generateKey(150);
     }
 
     /**
@@ -386,5 +394,39 @@ class Eleve
     public function getEntreprises()
     {
         return $this->entreprises;
+    }
+
+    function generateKey($length = 10) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+    }
+
+    /**
+     * Set apikey
+     *
+     * @param string $apikey
+     *
+     * @return Eleve
+     */
+    public function setApikey($apikey)
+    {
+        $this->apikey = $apikey;
+
+        return $this;
+    }
+
+    /**
+     * Get apikey
+     *
+     * @return string
+     */
+    public function getApikey()
+    {
+        return $this->apikey;
     }
 }

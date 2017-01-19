@@ -19,6 +19,8 @@ class LoadEleve extends AbstractFixture implements OrderedFixtureInterface
             ["Dupont", "Jean", new \DateTime(), "0000000", "0000000", "www.dupontjean.fr", "1 rue du développeur", "Perpignan"]
         );
 
+
+
         foreach($eleves as $eleve)
         {
             $student = new Eleve();
