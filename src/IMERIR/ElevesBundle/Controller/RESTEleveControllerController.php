@@ -23,14 +23,18 @@ class RESTEleveControllerController extends Controller
     /**
      * @Rest\View()
      *
-     * @QueryParam(name="key", requirements="\w+", description="Page of the overview.")
+     * @QueryParam(name="key", requirements="\w+", description="List of students.")
      *
      */
     public function getElevesListAction($key)
     {
+        $testAuth = $this->get('eleve.authentification');
 
-        if($key)
-            return $key;
+        if($key == null)
+            return array("success" => 0, "body" => "Forbidden ! Need a key to use api.");
+
+        if(!$testAuth->checkKey($key))
+            return array("success" => 0, "body" => "Forbidden ! Key not valid.");
 
         $listEleves = $this->getDoctrine()->getRepository('IMERIRElevesBundle:Eleve')->findAll();
 

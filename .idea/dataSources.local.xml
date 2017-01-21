@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="MySQL - webservice@localhost" uuid="1684c06c-f5cb-4ef3-9779-638556929030">
+      <secret-storage>memory</secret-storage>
+      <user-name>root</user-name>
+      <schema-pattern>webservice.*</schema-pattern>
+      <default-schemas>webservice.*</default-schemas>
+    </data-source>
+  </component>
+</project>
