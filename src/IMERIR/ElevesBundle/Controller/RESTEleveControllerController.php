@@ -42,13 +42,25 @@ class RESTEleveControllerController extends Controller
         return array("succes" => 1, "body" => $listEleves);
     }
 
-    public function getElevesAction($id, Request $request)
+    /**
+     * @Rest\View()
+     *
+     * @QueryParam(name="key", requirements="\w+", description="List of students.")
+     *
+     */
+    public function getElevesAction($id, $key)
     {
-        $listEleves = array(
-            1 => "toto",
-            2 => "tutu"
-        );
 
-        return new JsonResponse($listEleves[$id]);
+        $testAuth = $this->get('eleve.authentification');
+
+        if($key == null)
+            return array("success" => 0, "body" => "Forbidden ! Need a key to use api.");
+
+        if(!$testAuth->checkKey($key))
+            return array("success" => 0, "body" => "Forbidden ! Key not valid.");
+
+        $eleve = $this->getDoctrine()->getRepository('IMERIRElevesBundle:Eleve')->find($id);
+
+        return array("succes" => 1, "body" => $eleve);
     }
 }
