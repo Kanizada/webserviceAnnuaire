@@ -36,6 +36,20 @@ class Eleve
     private $prenom;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=255)
+     */
+    private $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="password", type="string", length=255)
+     */
+    private $password;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_inscription", type="datetime")
@@ -359,7 +373,7 @@ class Eleve
     public function __construct()
     {
         $this->entreprises = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->apikey = $this->generateKey(25);
+        $this->apikey = $this->generateKey(150);
     }
 
     /**
@@ -404,5 +418,29 @@ class Eleve
             $randomString .= $characters[rand(0, $charactersLength - 1)];
         }
         return $randomString;
+    }
+
+    /**
+     * Set apikey
+     *
+     * @param string $apikey
+     *
+     * @return Eleve
+     */
+    public function setApikey($apikey)
+    {
+        $this->apikey = $apikey;
+
+        return $this;
+    }
+
+    /**
+     * Get apikey
+     *
+     * @return string
+     */
+    public function getApikey()
+    {
+        return $this->apikey;
     }
 }

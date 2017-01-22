@@ -36,6 +36,20 @@ class Eleve
     private $prenom;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=255, unique=true)
+     */
+    private $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="password", type="string", length=255)
+     */
+    private $password;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_inscription", type="datetime")
@@ -428,5 +442,53 @@ class Eleve
     public function getApikey()
     {
         return $this->apikey;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     *
+     * @return Eleve
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set password
+     *
+     * @param string $password
+     *
+     * @return Eleve
+     */
+    public function setPassword($password)
+    {
+        $this->password = password_hash($password, PASSWORD_DEFAULT);
+
+        return $this;
+    }
+
+    /**
+     * Get password
+     *
+     * @return string
+     */
+    public function getPassword()
+    {
+        return $this->password;
     }
 }

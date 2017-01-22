@@ -63,4 +63,29 @@ class RESTEleveControllerController extends Controller
 
         return array("succes" => 1, "body" => $eleve);
     }
+
+    /**
+     * @Rest\View()
+     *
+     * @QueryParam(name="email")
+     *
+     * @QueryParam(name="password", requirements="\w+")
+     *
+     */
+    public function getConnectAction($email, $password)
+    {
+        $authServ = $this->get('eleve.authentification');
+
+        if($email == null || $password == null)
+            return $authServ->formattedResponse(0, "Email and password must be enter.");
+
+        $eleve = $authServ->verifyPassword($email, $password);
+        if($eleve == null)
+            return $authServ->formattedResponse(0, "Email or password not correct.");
+
+        return $eleve;
+
+
+
+    }
 }
