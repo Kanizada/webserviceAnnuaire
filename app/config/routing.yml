@@ -6,6 +6,18 @@
 #    resource: "@AppBundle/Controller/"
 #    type:     annotation
 
+api_authentification:
+    type:     rest
+    resource: "@IMERIRElevesBundle/Controller/RESTAuthentificationController.php"
+
 api_eleves:
     type:     rest
-    resource: "@IMERIRElevesBundle/Controller/RESTEleveControllerController.php"
+    resource: "@IMERIRElevesBundle/Controller/RESTEleveController.php"
+
+api_promotions:
+    type:     rest
+    resource: "@IMERIRElevesBundle/Controller/RESTPromotionController.php"
+
+api_entreprises:
+    type:     rest
+    resource: "@IMERIRElevesBundle/Controller/RESTEntrepriseController.php"

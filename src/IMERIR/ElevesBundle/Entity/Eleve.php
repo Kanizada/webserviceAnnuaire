@@ -3,10 +3,13 @@
 namespace IMERIR\ElevesBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation\Exclude;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
+use JMS\Serializer\Annotation\Groups;
 
 /**
- * Eleve
- *
+ * @ExclusionPolicy("ALL")
  * @ORM\Table(name="eleve")
  * @ORM\Entity(repositoryClass="IMERIR\ElevesBundle\Repository\EleveRepository")
  */
@@ -14,15 +17,16 @@ class Eleve
 {
     /**
      * @var int
-     *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
+     * @Expose()
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var string
+     * @Expose()
      *
      * @ORM\Column(name="nom", type="string", length=255)
      */
@@ -30,6 +34,7 @@ class Eleve
 
     /**
      * @var string
+     * @Expose()
      *
      * @ORM\Column(name="prenom", type="string", length=255)
      */
@@ -37,6 +42,7 @@ class Eleve
 
     /**
      * @var string
+     * @Expose()
      *
      * @ORM\Column(name="email", type="string", length=255, unique=true)
      */
@@ -44,13 +50,15 @@ class Eleve
 
     /**
      * @var string
-     *
+     * @Expose()
+     * @Groups("Hidden")
      * @ORM\Column(name="password", type="string", length=255)
      */
     private $password;
 
     /**
      * @var \DateTime
+     * @Expose()
      *
      * @ORM\Column(name="date_inscription", type="datetime")
      */
@@ -58,6 +66,7 @@ class Eleve
 
     /**
      * @var string
+     * @Expose()
      *
      * @ORM\Column(name="telephone_mobile", type="string", length=255)
      */
@@ -65,6 +74,7 @@ class Eleve
 
     /**
      * @var string
+     * @Expose()
      *
      * @ORM\Column(name="telephone_perso", type="string", length=255)
      */
@@ -72,6 +82,7 @@ class Eleve
 
     /**
      * @var string
+     * @Expose()
      *
      * @ORM\Column(name="site_web", type="string", length=255)
      */
@@ -79,6 +90,7 @@ class Eleve
 
     /**
      * @var string
+     * @Expose()
      *
      * @ORM\Column(name="adresse", type="string", length=255)
      */
@@ -86,6 +98,7 @@ class Eleve
 
     /**
      * @var string
+     * @Expose()
      *
      * @ORM\Column(name="ville", type="string", length=255)
      */
@@ -93,6 +106,7 @@ class Eleve
 
     /**
      * @var string
+     * @Expose()
      *
      * @ORM\Column(name="photo", type="blob", nullable=true)
      */
@@ -100,18 +114,22 @@ class Eleve
 
     /**
      * @var string
+     * @Expose()
+     * @Groups("Hidden")
      *
      * @ORM\Column(name="apikey", type="string", length=255)
      */
     private $apikey;
 
     /**
+     * @Expose()
      * @ORM\ManyToOne(targetEntity="IMERIR\ElevesBundle\Entity\Promotion")
      * @ORM\JoinColumn(nullable=true)
      */
     private $promotion;
 
     /**
+     * @Expose()
      * @ORM\ManyToMany(targetEntity="IMERIR\ElevesBundle\Entity\Entreprise", cascade={"persist"})
      */
     private $entreprises;
