@@ -2,22 +2,18 @@
 
 namespace IMERIR\ElevesBundle\Controller;
 
+
+use FOS\RestBundle\Controller\Annotations as Rest;
+use FOS\RestBundle\Controller\Annotations\QueryParam;
+use FOS\RestBundle\Controller\Annotations\RouteResource;
 use IMERIR\ElevesBundle\Entity\Eleve;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\Config\Definition\Exception\Exception;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Response;
-use FOS\RestBundle\Controller\Annotations as Rest;
-use FOS\RestBundle\Controller\Annotations\RequestParam;
-use FOS\RestBundle\Request\ParamFetcher;
-use FOS\RestBundle\Controller\Annotations\QueryParam;
-use FOS\RestBundle\Controller\Annotations\FileParam;
-use Acme\FooBundle\Validation\Constraints\MyComplexConstraint;
-use FOS\RestBundle\Controller\Annotations\Post;
-use FOS\RestBundle\Controller\Annotations\Put;
-use FOS\RestBundle\Controller\Annotations\Delete;
 
+
+/**
+ * @RouteResource("Eleves")
+ *
+ */
 class RESTEleveControllerController extends Controller
 {
     /**
@@ -26,15 +22,16 @@ class RESTEleveControllerController extends Controller
      * @QueryParam(name="key", requirements="\w+", description="List of students.")
      *
      */
-    public function getElevesListAction($key)
+    public function getListAction($key)
     {
-        $testAuth = $this->get('eleve.authentification');
+        $authServ = $this->get('eleve.authentification');
 
         if($key == null)
-            return array("success" => 0, "body" => "Forbidden ! Need a key to use api.");
+            return $authServ->formattedResponse(0, "Forbidden ! Need a key to use api.");
 
-        if(!$testAuth->checkKey($key))
-            return array("success" => 0, "body" => "Forbidden ! Key not valid.");
+        if(!$authServ->checkKey($key))
+            return $authServ->formattedResponse(0, "Forbidden ! Key not valid.");
+
 
         $listEleves = $this->getDoctrine()->getRepository('IMERIRElevesBundle:Eleve')->findAll();
 
@@ -48,16 +45,16 @@ class RESTEleveControllerController extends Controller
      * @QueryParam(name="key", requirements="\w+", description="List of students.")
      *
      */
-    public function getElevesAction($id, $key)
+    public function getAction($id, $key)
     {
 
-        $testAuth = $this->get('eleve.authentification');
+        $authServ = $this->get('eleve.authentification');
 
         if($key == null)
-            return array("success" => 0, "body" => "Forbidden ! Need a key to use api.");
+            return $authServ->formattedResponse(0, "Forbidden ! Need a key to use api.");
 
-        if(!$testAuth->checkKey($key))
-            return array("success" => 0, "body" => "Forbidden ! Key not valid.");
+        if(!$authServ->checkKey($key))
+            return $authServ->formattedResponse(0, "Forbidden ! Key not valid.");
 
         $eleve = $this->getDoctrine()->getRepository('IMERIRElevesBundle:Eleve')->find($id);
 
