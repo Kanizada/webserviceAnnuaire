@@ -58,4 +58,33 @@ class RESTEntrepriseController extends Controller
 
         return $authServ->formattedResponse(1, $entreprise);
     }
+
+
+    /**
+     * @Rest\View()
+     *
+     * @Rest\Get("entreprises/departement/{id}")
+     * @QueryParam(name="key", requirements="\w+", description="List of students.")
+     *
+     */
+    public function getDepartementAction($id, $key)
+    {
+
+        $authServ = $this->get('eleve.authentification');
+
+        if($key == null)
+            return $authServ->formattedResponse(0, "Forbidden ! Need a key to use api.");
+
+        if(!$authServ->checkKey($key))
+            return $authServ->formattedResponse(0, "Forbidden ! Key not valid.");
+
+        $entreprises = $this->getDoctrine()->getRepository('IMERIRElevesBundle:Entreprise')->createQueryBuilder("a")
+            ->where('a.codePostal LIKE :numeroDep')
+            ->setParameter('numeroDep', $id."%")
+            ->getQuery();
+
+        dump($entreprises);
+        return $authServ->formattedResponse(1, $entreprises->getResult());
+    }
+
 }

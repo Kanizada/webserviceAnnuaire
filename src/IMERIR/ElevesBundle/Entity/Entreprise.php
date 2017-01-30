@@ -38,6 +38,13 @@ class Entreprise
     /**
      * @var string
      *
+     * @ORM\Column(name="codePostal", type="string", length=255, nullable=true)
+     */
+    private $codePostal;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="telephone", type="string", length=255, nullable=true)
      */
     private $telephone;
@@ -154,5 +161,29 @@ class Entreprise
     public function getMail()
     {
         return $this->mail;
+    }
+
+    /**
+     * Set codePostal
+     *
+     * @param string $codePostal
+     *
+     * @return Entreprise
+     */
+    public function setCodePostal($codePostal)
+    {
+        $this->codePostal = $codePostal;
+
+        return $this;
+    }
+
+    /**
+     * Get codePostal
+     *
+     * @return string
+     */
+    public function getCodePostal()
+    {
+        return $this->codePostal;
     }
 }

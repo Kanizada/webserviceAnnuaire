@@ -38,6 +38,13 @@ class Entreprise
     /**
      * @var string
      *
+     * @ORM\Column(name="codePostal", type="string", length=255, nullable=true)
+     */
+    private $codePostal;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="telephone", type="string", length=255, nullable=true)
      */
     private $telephone;
