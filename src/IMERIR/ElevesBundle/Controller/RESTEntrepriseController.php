@@ -83,7 +83,6 @@ class RESTEntrepriseController extends Controller
             ->setParameter('numeroDep', $id."%")
             ->getQuery();
 
-        dump($entreprises);
         return $authServ->formattedResponse(1, $entreprises->getResult());
     }
 

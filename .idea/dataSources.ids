@@ -132,32 +132,35 @@ entreprise_id</columns>
       <column id="34" parent="4" name="adresse">
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="35" parent="4" name="telephone">
+      <column id="35" parent="4" name="codePostal">
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="36" parent="4" name="mail">
+      <column id="36" parent="4" name="telephone">
         <data-type>varchar(255)</data-type>
       </column>
-      <key id="37" parent="4" name="PRIMARY">
+      <column id="37" parent="4" name="mail">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <key id="38" parent="4" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="38" parent="5" name="id">
+      <column id="39" parent="5" name="id">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="39" parent="5" name="nom">
+      <column id="40" parent="5" name="nom">
         <mandatory>1</mandatory>
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="40" parent="5" name="annee">
+      <column id="41" parent="5" name="annee">
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="41" parent="5" name="promo_actuelle">
+      <column id="42" parent="5" name="promo_actuelle">
         <mandatory>1</mandatory>
         <data-type>tinyint(1)</data-type>
       </column>
-      <key id="42" parent="5" name="PRIMARY">
+      <key id="43" parent="5" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>

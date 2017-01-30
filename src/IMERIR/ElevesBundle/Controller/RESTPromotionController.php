@@ -29,9 +29,45 @@ class RESTPromotionController extends Controller
             return $authServ->formattedResponse(0, "Forbidden ! Key not valid.");
 
 
-        $listPromotions = $this->getDoctrine()->getRepository('IMERIRElevesBundle:Promotion')->findAll();
+        $listPromotions = $this->getDoctrine()
+            ->getRepository('IMERIRElevesBundle:Promotion')
+            ->findAll();
 
         /* @var $listEntreprises Eleve[] */
         return $authServ->formattedResponse(1, $listPromotions);
+    }
+
+    /**
+     *
+     * @Rest\View(serializerGroups={"Default"})
+     *
+     * @QueryParam(name="key", requirements="\w+")
+     *
+     */
+    public function getElevesAction($id, $key)
+    {
+        $authServ = $this->get('eleve.authentification');
+
+        if($key == null)
+            return $authServ->formattedResponse(0, "Forbidden ! Need a key to use api.");
+
+        if(!$authServ->checkKey($key))
+            return $authServ->formattedResponse(0, "Forbidden ! Key not valid.");
+
+        $promotion = $this->getDoctrine()
+            ->getRepository('IMERIRElevesBundle:Promotion')
+            ->find($id);
+
+        if($promotion == null)
+            return $authServ->formattedResponse(0, "Promotion don't exist.");
+
+        $eleves = $this->getDoctrine()
+            ->getRepository('IMERIRElevesBundle:Eleve')
+            ->findBy(array('promotion' => $promotion));
+
+        return $authServ->formattedResponse(1, $eleves);
+
+
+
     }
 }
