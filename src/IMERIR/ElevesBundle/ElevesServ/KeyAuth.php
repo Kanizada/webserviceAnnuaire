@@ -1,6 +1,6 @@
 <?php
 
-namespace IMERIR\ElevesBundle\Authentification;
+namespace IMERIR\ElevesBundle\ElevesServ;
 
 use Doctrine\ORM\EntityManager;
 use IMERIR\ElevesBundle\Entity\Eleve;

@@ -2,6 +2,7 @@
 
 namespace IMERIR\ElevesBundle\Entity;
 
+use Doctrine\Common\Annotations\Annotation\Required;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation\Exclude;
 use JMS\Serializer\Annotation\ExclusionPolicy;
@@ -27,6 +28,7 @@ class Eleve
     /**
      * @var string
      * @Expose()
+     *
      *
      * @ORM\Column(name="nom", type="string", length=255)
      */
@@ -133,7 +135,6 @@ class Eleve
      * @ORM\ManyToMany(targetEntity="IMERIR\ElevesBundle\Entity\Entreprise", cascade={"persist"})
      */
     private $entreprises;
-
 
 
     /**
