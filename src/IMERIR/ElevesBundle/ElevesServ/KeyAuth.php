@@ -19,6 +19,21 @@ class KeyAuth
      * @param string $key
      * @return bool
      */
+    public function checkAdminKey($key)
+    {
+        $admin = $this->em->getRepository('IMERIRElevesBundle:Admin')->findBy(array('apikey' => $key));
+        if($admin)
+            return true;
+        else
+            return false;
+    }
+
+    /**
+     * Check if the key is correct
+     *
+     * @param string $key
+     * @return bool
+     */
     public function checkKey($key)
     {
         $eleve = $this->em->getRepository('IMERIRElevesBundle:Eleve')->findBy(array('apikey' => $key));

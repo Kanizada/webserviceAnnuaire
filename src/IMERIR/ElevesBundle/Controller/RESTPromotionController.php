@@ -25,7 +25,7 @@ class RESTPromotionController extends Controller
         if($key == null)
             return $authServ->formattedResponse(0, "Forbidden ! Need a key to use api.");
 
-        if(!$authServ->checkKey($key))
+        if(!$authServ->checkKey($key) && !$authServ->checkAdminKey($key))
             return $authServ->formattedResponse(0, "Forbidden ! Key not valid.");
 
 
@@ -51,7 +51,7 @@ class RESTPromotionController extends Controller
         if($key == null)
             return $authServ->formattedResponse(0, "Forbidden ! Need a key to use api.");
 
-        if(!$authServ->checkKey($key))
+        if(!$authServ->checkKey($key) && !$authServ->checkAdminKey($key))
             return $authServ->formattedResponse(0, "Forbidden ! Key not valid.");
 
         $promotion = $this->getDoctrine()

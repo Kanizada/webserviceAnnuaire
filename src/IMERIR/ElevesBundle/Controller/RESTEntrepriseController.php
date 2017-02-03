@@ -27,7 +27,7 @@ class RESTEntrepriseController extends Controller
         if($key == null)
             return $authServ->formattedResponse(0, "Forbidden ! Need a key to use api.");
 
-        if(!$authServ->checkKey($key))
+        if(!$authServ->checkKey($key) && !$authServ->checkAdminKey($key))
             return $authServ->formattedResponse(0, "Forbidden ! Key not valid.");
 
 
@@ -51,7 +51,7 @@ class RESTEntrepriseController extends Controller
         if($key == null)
             return $authServ->formattedResponse(0, "Forbidden ! Need a key to use api.");
 
-        if(!$authServ->checkKey($key))
+        if(!$authServ->checkKey($key) && !$authServ->checkAdminKey($key))
             return $authServ->formattedResponse(0, "Forbidden ! Key not valid.");
 
         $entreprise = $this->getDoctrine()->getRepository('IMERIRElevesBundle:Entreprise')->find($id);
@@ -75,7 +75,7 @@ class RESTEntrepriseController extends Controller
         if($key == null)
             return $authServ->formattedResponse(0, "Forbidden ! Need a key to use api.");
 
-        if(!$authServ->checkKey($key))
+        if(!$authServ->checkKey($key) && !$authServ->checkAdminKey($key))
             return $authServ->formattedResponse(0, "Forbidden ! Key not valid.");
 
         $entreprises = $this->getDoctrine()->getRepository('IMERIRElevesBundle:Entreprise')->createQueryBuilder("a")

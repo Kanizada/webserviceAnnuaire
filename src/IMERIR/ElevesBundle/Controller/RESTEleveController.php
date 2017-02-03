@@ -33,7 +33,8 @@ class RESTEleveController extends Controller
         if($key == null)
             return $authServ->formattedResponse(0, "Forbidden ! Need a key to use api.");
 
-        if(!$authServ->checkKey($key))
+
+        if(!$authServ->checkKey($key) && !$authServ->checkAdminKey($key))
             return $authServ->formattedResponse(0, "Forbidden ! Key not valid.");
 
 
@@ -57,7 +58,7 @@ class RESTEleveController extends Controller
         if($key == null)
             return $authServ->formattedResponse(0, "Forbidden ! Need a key to use api.");
 
-        if(!$authServ->checkKey($key))
+        if(!$authServ->checkKey($key) && !$authServ->checkAdminKey($key))
             return $authServ->formattedResponse(0, "Forbidden ! Key not valid.");
 
         $eleve = $this->getDoctrine()->getRepository('IMERIRElevesBundle:Eleve')->find($id);
@@ -84,7 +85,7 @@ class RESTEleveController extends Controller
         if(null === $eleve)
             return $authServ->formattedResponse(0, "Eleve not found.");
 
-        if($key != $eleve->getApikey())
+        if($key != $eleve->getApikey() || $authServ->checkAdminKey($key))
             return $authServ->formattedResponse(0, "Not allowed to edit an another eleve.");
 
 
