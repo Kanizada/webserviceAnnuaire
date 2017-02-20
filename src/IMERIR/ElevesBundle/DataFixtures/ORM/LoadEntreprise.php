@@ -24,7 +24,7 @@ class LoadEntreprise extends AbstractFixture implements OrderedFixtureInterface
             $enterprise->setNom($entreprise[0]);
             $enterprise->setAdresse($entreprise[1]);
             $enterprise->setTelephone($entreprise[2]);
-            $enterprise->setMail($entreprise[3]);
+            $enterprise->setEMail($entreprise[3]);
             $enterprise->setCodePostal($entreprise[4]);
 
             $manager->persist($enterprise);

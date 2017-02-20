@@ -13,10 +13,10 @@ class LoadEleve extends AbstractFixture implements OrderedFixtureInterface
     public function load(ObjectManager $manager)
     {
         $eleves = array(
-            ["Dupont", "Jean", new \DateTime(), "0000000", "0000000", "www.dupontjean.fr", "1 rue du développeur", "Perpignan", "jean.dupont0@imerir.com", "Imerir66"],
-            ["Dupont", "Jean", new \DateTime(), "0000000", "0000000", "www.dupontjean.fr", "1 rue du développeur", "Perpignan", "jean.dupont1@imerir.com", "Imerir66"],
-            ["Dupont", "Jean", new \DateTime(), "0000000", "0000000", "www.dupontjean.fr", "1 rue du développeur", "Perpignan", "jean.dupont2@imerir.com", "Imerir66"],
-            ["Dupont", "Jean", new \DateTime(), "0000000", "0000000", "www.dupontjean.fr", "1 rue du développeur", "Perpignan", "jean.dupont3@imerir.com", "Imerir66"]
+            ["Dupont", "Jean", new \DateTime(), "0000000", "0000000", "www.dupontjean.fr", "1 rue du développeur", "66000", "jean.dupont0@imerir.com", "Imerir66"],
+            ["Dupont", "Jean", new \DateTime(), "0000000", "0000000", "www.dupontjean.fr", "1 rue du développeur", "66000", "jean.dupont1@imerir.com", "Imerir66"],
+            ["Dupont", "Jean", new \DateTime(), "0000000", "0000000", "www.dupontjean.fr", "1 rue du développeur", "66000", "jean.dupont2@imerir.com", "Imerir66"],
+            ["Dupont", "Jean", new \DateTime(), "0000000", "0000000", "www.dupontjean.fr", "1 rue du développeur", "66000", "jean.dupont3@imerir.com", "Imerir66"]
         );
 
 
@@ -28,7 +28,7 @@ class LoadEleve extends AbstractFixture implements OrderedFixtureInterface
         $student->setTelephonePerso("0123456789");
         $student->setSiteWeb("www.imerir.com");
         $student->setAdresse("Avenue Paul Pascot, BP 90443");
-        $student->setVille("Perpignan");
+        $student->setCodePostal("66000");
         $student->setEmail("dev.annuaire@imerir.com");
         $student->setPassword("devPassword");
         $student->setApikey("devTmpKey");
@@ -47,7 +47,7 @@ class LoadEleve extends AbstractFixture implements OrderedFixtureInterface
             $student->setTelephonePerso($eleve[4]);
             $student->setSiteWeb($eleve[5]);
             $student->setAdresse($eleve[6]);
-            $student->setVille($eleve[7]);
+            $student->setCodePostal($eleve[7]);
             $student->setEmail($eleve[8]);
             $student->setPassword($eleve[9]);
             $student->setPromotion($this->getReference('goa-promo'));
