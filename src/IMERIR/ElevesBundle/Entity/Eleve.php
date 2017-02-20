@@ -102,9 +102,9 @@ class Eleve
      * @var string
      * @Expose()
      *
-     * @ORM\Column(name="ville", type="string", length=255)
+     * @ORM\Column(name="codePostal", type="string", length=255)
      */
-    private $ville;
+    private $codePostal;
 
     /**
      * @var string
@@ -322,7 +322,7 @@ class Eleve
      *
      * @return Eleve
      */
-    public function setVille($ville)
+    public function setCodePostal($ville)
     {
         $this->ville = $ville;
 
@@ -334,7 +334,7 @@ class Eleve
      *
      * @return string
      */
-    public function getVille()
+    public function getCodePostal()
     {
         return $this->ville;
     }
