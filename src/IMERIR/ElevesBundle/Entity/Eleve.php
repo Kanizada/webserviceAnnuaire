@@ -318,13 +318,13 @@ class Eleve
     /**
      * Set ville
      *
-     * @param string $ville
+     * @param string $codePostal
      *
      * @return Eleve
      */
-    public function setCodePostal($ville)
+    public function setCodePostal($codePostal)
     {
-        $this->ville = $ville;
+        $this->codePostal = $codePostal;
 
         return $this;
     }
@@ -336,7 +336,7 @@ class Eleve
      */
     public function getCodePostal()
     {
-        return $this->ville;
+        return $this->codePostal;
     }
 
     /**
