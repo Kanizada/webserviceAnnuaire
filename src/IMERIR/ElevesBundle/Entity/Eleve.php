@@ -52,8 +52,7 @@ class Eleve
 
     /**
      * @var string
-     * @Expose()
-     * @Groups("Hidden")
+     *
      * @ORM\Column(name="password", type="string", length=255)
      */
     private $password;
@@ -78,9 +77,9 @@ class Eleve
      * @var string
      * @Expose()
      *
-     * @ORM\Column(name="telephone_perso", type="string", length=255)
+     * @ORM\Column(name="telephone_fixe", type="string", length=255)
      */
-    private $telephonePerso;
+    private $telephoneFixe;
 
     /**
      * @var string
@@ -106,13 +105,14 @@ class Eleve
      */
     private $codePostal;
 
+
     /**
      * @var string
      * @Expose()
      *
-     * @ORM\Column(name="photo", type="blob", nullable=true)
+     * @ORM\Column(name="ville", type="string", length=255)
      */
-    private $photo;
+    private $ville;
 
     /**
      * @var string
@@ -244,30 +244,6 @@ class Eleve
     }
 
     /**
-     * Set telephonePerso
-     *
-     * @param string $telephonePerso
-     *
-     * @return Eleve
-     */
-    public function setTelephonePerso($telephonePerso)
-    {
-        $this->telephonePerso = $telephonePerso;
-
-        return $this;
-    }
-
-    /**
-     * Get telephonePerso
-     *
-     * @return string
-     */
-    public function getTelephonePerso()
-    {
-        return $this->telephonePerso;
-    }
-
-    /**
      * Set siteWeb
      *
      * @param string $siteWeb
@@ -337,30 +313,6 @@ class Eleve
     public function getCodePostal()
     {
         return $this->codePostal;
-    }
-
-    /**
-     * Set photo
-     *
-     * @param string $photo
-     *
-     * @return Eleve
-     */
-    public function setPhoto($photo)
-    {
-        $this->photo = $photo;
-
-        return $this;
-    }
-
-    /**
-     * Get photo
-     *
-     * @return string
-     */
-    public function getPhoto()
-    {
-        return $this->photo;
     }
 
     /**
@@ -509,5 +461,53 @@ class Eleve
     public function getPassword()
     {
         return $this->password;
+    }
+
+    /**
+     * Set telephoneFixe
+     *
+     * @param string $telephoneFixe
+     *
+     * @return Eleve
+     */
+    public function setTelephoneFixe($telephoneFixe)
+    {
+        $this->telephoneFixe = $telephoneFixe;
+
+        return $this;
+    }
+
+    /**
+     * Get telephoneFixe
+     *
+     * @return string
+     */
+    public function getTelephoneFixe()
+    {
+        return $this->telephoneFixe;
+    }
+
+    /**
+     * Set ville
+     *
+     * @param string $ville
+     *
+     * @return Eleve
+     */
+    public function setVille($ville)
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    /**
+     * Get ville
+     *
+     * @return string
+     */
+    public function getVille()
+    {
+        return $this->ville;
     }
 }

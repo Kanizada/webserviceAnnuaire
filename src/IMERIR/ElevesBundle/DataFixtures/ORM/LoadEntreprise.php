@@ -28,6 +28,8 @@ class LoadEntreprise extends AbstractFixture implements OrderedFixtureInterface
             $enterprise->setCodePostal($entreprise[4]);
 
             $manager->persist($enterprise);
+
+            $this->addReference($entreprise[0], $enterprise);
         }
 
         $manager->flush();
