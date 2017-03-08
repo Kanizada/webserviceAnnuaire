@@ -64,13 +64,17 @@ class KeyAuth
      */
     public function verifyPassword($email, $password)
     {
-        $eleve = $this->em->getRepository('IMERIRElevesBundle:Eleve')->findOneBy(array('id' => 1));
-        if($eleve == null)
+        $eleve = $this->em->getRepository('IMERIRElevesBundle:Eleve')->findOneBy(array('email' => $email));
+        if($eleve == null){
+            echo "don't find student";
             return null;
+        }
 
         $hashedPass = $eleve->getPassword();
-        if(!password_verify($password, $hashedPass))
+        if(!password_verify($password, $hashedPass)){
+            echo "bad password";
             return null;
+        }
 
         return $eleve;
     }
