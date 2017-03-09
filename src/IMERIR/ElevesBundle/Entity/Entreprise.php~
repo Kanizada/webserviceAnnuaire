@@ -52,9 +52,17 @@ class Entreprise
     /**
      * @var string
      *
-     * @ORM\Column(name="mail", type="string", length=255, nullable=true)
+     * @ORM\Column(name="email", type="string", length=255, nullable=true)
      */
-    private $mail;
+    private $email;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="site_web", type="string", length=255, nullable=true)
+     */
+    private $site_web;
 
 
     /**
@@ -140,26 +148,50 @@ class Entreprise
     }
 
     /**
-     * Set mail
+     * Set email
      *
-     * @param string $mail
+     * @param string $email
      *
      * @return Entreprise
      */
-    public function setMail($mail)
+    public function setEmail($email)
     {
-        $this->mail = $mail;
+        $this->email = $email;
 
         return $this;
     }
 
     /**
-     * Get mail
+     * Get email
      *
      * @return string
      */
-    public function getMail()
+    public function getEmail()
     {
-        return $this->mail;
+        return $this->email;
+    }
+
+    /**
+     * Set codePostal
+     *
+     * @param string $codePostal
+     *
+     * @return Entreprise
+     */
+    public function setCodePostal($codePostal)
+    {
+        $this->codePostal = $codePostal;
+
+        return $this;
+    }
+
+    /**
+     * Get codePostal
+     *
+     * @return string
+     */
+    public function getCodePostal()
+    {
+        return $this->codePostal;
     }
 }

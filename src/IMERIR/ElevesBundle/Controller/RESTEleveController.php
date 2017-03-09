@@ -17,6 +17,7 @@ use IMERIR\ElevesBundle\Form\EleveType;
 /**
  * @RouteResource("Eleves")
  *
+ * Controller de gestion des Eleves
  */
 class RESTEleveController extends Controller
 {

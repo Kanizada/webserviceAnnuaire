@@ -58,6 +58,14 @@ class Entreprise
 
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="site_web", type="string", length=255, nullable=true)
+     */
+    private $site_web;
+
+
+    /**
      * Get id
      *
      * @return int
@@ -185,5 +193,29 @@ class Entreprise
     public function getCodePostal()
     {
         return $this->codePostal;
+    }
+
+    /**
+     * Set siteWeb
+     *
+     * @param string $siteWeb
+     *
+     * @return Entreprise
+     */
+    public function setSiteWeb($siteWeb)
+    {
+        $this->site_web = $siteWeb;
+
+        return $this;
+    }
+
+    /**
+     * Get siteWeb
+     *
+     * @return string
+     */
+    public function getSiteWeb()
+    {
+        return $this->site_web;
     }
 }

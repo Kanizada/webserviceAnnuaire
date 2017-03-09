@@ -9,6 +9,9 @@ use FOS\RestBundle\Controller\Annotations\View;
 use FOS\RestBundle\Controller\Annotations\RouteResource;
 use IMERIR\ElevesBundle\Entity\Eleve;
 
+/*
+ * Controller de gestion de l'authentification
+ */
 class RESTAuthentificationController extends Controller
 {
     /**

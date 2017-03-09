@@ -11,6 +11,7 @@ use IMERIR\ElevesBundle\Entity\Entreprise;
 /**
  * @RouteResource("Promotions")
  *
+ * Controller de gestion des Promotions
  */
 class RESTPromotionController extends Controller
 {

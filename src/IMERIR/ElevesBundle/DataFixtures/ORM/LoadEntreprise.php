@@ -12,10 +12,10 @@ class LoadEntreprise extends AbstractFixture implements OrderedFixtureInterface
     public function load(ObjectManager $manager)
     {
         $entreprises = array(
-            ["Google", "Silicon Valley", "00000000", "contact@google.com", "66000"],
-            ["Facebook", "Silicon Valley", "00000001", "contact@facebook.com", "77080"],
-            ["Twitter", "Silicon Valley", "00000002", "contact@twitter.com", "66310"],
-            ["Apple", "The Earth", "99999999", "givemeyourmoney@apple.com", "66450"]
+            ["Google", "Silicon Valley", "00000000", "contact@google.com", "66000", "https://www.google.com"],
+            ["Facebook", "Silicon Valley", "00000001", "contact@facebook.com", "77080", "https://www.facebook.com"],
+            ["Twitter", "Silicon Valley", "00000002", "contact@twitter.com", "66310", "https://twitter.com"],
+            ["Apple", "The Earth", "99999999", "givemeyourmoney@apple.com", "66450", "https://www.apple.com"]
         );
 
         foreach($entreprises as $entreprise)
@@ -26,6 +26,7 @@ class LoadEntreprise extends AbstractFixture implements OrderedFixtureInterface
             $enterprise->setTelephone($entreprise[2]);
             $enterprise->setEMail($entreprise[3]);
             $enterprise->setCodePostal($entreprise[4]);
+            $enterprise->setSiteWeb($entreprise[5]);
 
             $manager->persist($enterprise);
 

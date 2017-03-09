@@ -11,6 +11,7 @@ use IMERIR\ElevesBundle\Entity\Entreprise;
 /**
  * @RouteResource("Entreprises")
  *
+ * Controller de gestion des Entreprises
  */
 class RESTEntrepriseController extends Controller
 {
