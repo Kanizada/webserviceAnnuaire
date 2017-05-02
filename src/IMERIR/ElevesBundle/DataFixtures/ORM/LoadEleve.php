@@ -1015,6 +1015,10 @@ class LoadEleve extends AbstractFixture implements OrderedFixtureInterface
             ["Dupont 1000", "Jean", new \DateTime(), "100664295", "468000999", "http://www.dupontjean.fr", "1000 rue du développeur", "66999", "jean.dupont999@imerir.com", "Imerir", "Perpignan"],
         );
 
+        $facebook = array(
+            ["Facebook 1", "Jean", new \DateTime(), "0600000000", "0468000000", "http://www.facebook1.fr", "1 rue du développeur", "66000", "jean.facebook0@imerir.com", "Imerir", "Perpignan"],
+            ["Facebook 2", "Jean", new \DateTime(), "100663297", "468000001", "http://www.facebook2.fr", "2 rue du développeur", "66001", "jean.facebook1@imerir.com", "Imerir", "Perpignan"],
+            ["Facebook 3", "Jean", new \DateTime(), "100663298", "468000002", "http://www.facebook3.fr", "3 rue du développeur", "66002", "jean.facebook2@imerir.com", "Imerir", "Perpignan"]);
 
         $student = new Eleve();
         $student->setNom("Dev FirstName");
@@ -1051,9 +1055,25 @@ class LoadEleve extends AbstractFixture implements OrderedFixtureInterface
             $student->setEmail($eleve[8]);
             $student->setPassword($eleve[9]);
             $student->setVille($eleve[10]);
-            $student->setPromotion($this->getReference('goa-promo'));
-            $student->addEntreprise($this->getReference('Facebook'));
-            $student->addEntreprise($this->getReference('Apple'));
+
+            $manager->persist($student);
+        }
+
+        foreach($facebook as $eleve)
+        {
+            $student = new Eleve();
+            $student->setNom($eleve[0]);
+            $student->setPrenom($eleve[1]);
+            $student->setDateInscription($eleve[2]);
+            $student->setTelephoneMobile($eleve[3]);
+            $student->setTelephoneFixe($eleve[4]);
+            $student->setSiteWeb($eleve[5]);
+            $student->setAdresse($eleve[6]);
+            $student->setCodePostal($eleve[7]);
+            $student->setEmail($eleve[8]);
+            $student->setPassword($eleve[9]);
+            $student->setVille($eleve[10]);
+            $student->addEntreprise('Facebook');
 
             $manager->persist($student);
         }
